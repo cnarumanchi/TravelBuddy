@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravelPartner.Data
+namespace TravelPartner.Data.Interfaces
 {
-    public class Class1
+    interface IHotelRepository
     {
     }
 }

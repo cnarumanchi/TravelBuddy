@@ -5,26 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using TravelPartner.Data.Context;
 using TravelPartner.Data.Entities;
+using TravelPartner.Data.Interfaces;
 
 namespace TravelPartner.Data.Repository
 {
-    public class HotelRepository
+    public class PackageRepository: IPackageRepository
     {
         TravelPartnerContext context;
 
-		public HotelRepository()
+        public PackageRepository()
         {
             context = new TravelPartnerContext();
         }
 
-		public List<Hotel> showHotels()
+        public List<Package> GetAll()
         {
-            return context.Hotels.Select(x=>x).ToList();
+            return context.Packages.Select(x => x).ToList();
         }
 
-        public bool InsertHotel(Hotel hotel)
+        public bool InsertPackage(Package package)
         {
-            context.Hotels.Add(hotel);
+            context.Packages.Add(package);
             return true;
         }
     }

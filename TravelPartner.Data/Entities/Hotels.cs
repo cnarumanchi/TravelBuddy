@@ -10,13 +10,9 @@ namespace TravelPartner.Data.Entities
     public class Hotel
     {
         public int HotelId { get; set; }
-        [Required]
-        public string Title{ get; set; }
-        [Required]
-        public  string Url { get; set; }
-        [Required]
-        public  string DisplayText { get; set; }
-        [Required]
+        public string Title { get; set; }
+        public string Url { get; set; }
+        public string DisplayText { get; set; }
         public string Content { get; set; }
     }
 }
