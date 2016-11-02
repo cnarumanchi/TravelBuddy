@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TravelPartner.Data</RootNamespace>
     <AssemblyName>TravelPartner.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,6 +55,7 @@
     <Compile Include="Entities\Hotels.cs" />
     <Compile Include="Entities\Packages.cs" />
     <Compile Include="Entities\Post.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IHotelRepository.cs" />
     <Compile Include="Interfaces\IPackageRepository.cs" />
     <Compile Include="Mapping\CommentMap.cs" />
