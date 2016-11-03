@@ -25,7 +25,9 @@
                     <li>@Html.ActionLink("Posts", "", "", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Hotels", "", "", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Packages", "", "", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Register", "", "", new { area = "" },new { @class = "right" })</li>
+                    <li>@Html.ActionLink("Register", "Register", "Login", new { area = "" },null)</li>
+                    <li>@Html.ActionLink("Login", "Index", "Login", new { area = "" }, null)</li>
+
                     @*Add all the actions you have to perform on the website*@
                 </ul>
             </div>

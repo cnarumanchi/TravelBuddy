@@ -26,12 +26,14 @@ namespace TravelPartner.Data.Context
             modelBuilder.Configurations.Add(new PackageMap());
             modelBuilder.Configurations.Add(new PostMap());
             modelBuilder.Configurations.Add(new CommentMap());
+            modelBuilder.Configurations.Add(new UserMap());
         }
         //Add all the dbsets of entities
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Package> Packages { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<User> Users { get; set; }
 
     }
 }
