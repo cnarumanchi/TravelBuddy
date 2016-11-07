@@ -30,11 +30,15 @@ namespace TravelPartner.Data
 
         private void CreateHotelSeed(TravelPartnerContext context)
         {
-            var hotel = new Hotel
+            var hotels = new List<Hotel>()
             {
+                new Hotel{Title="abc",DisplayText="This is the display text",Content="abcdefgh",Image="image1.jpg"}, 
+                new Hotel{ Title="abc",DisplayText="This is the display text",Content="abcdefgh",Image="image1.jpg"}, 
+                new Hotel{ Title="abc",DisplayText="This is the display text",Content="abcdefgh",Image="image1.jpg"}
                 //Insert the Prepopulated list from http://www.travel-buddies.com/Default.aspx
             };
-            context.Hotels.Add(hotel);
+
+            context.Hotels.AddRange(hotels);
             context.SaveChanges();
         }
     }

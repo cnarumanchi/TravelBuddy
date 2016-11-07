@@ -20,6 +20,8 @@ namespace TravelPartner.Models
         }
 
         public System.Data.Entity.DbSet<TravelPartner.Data.Entities.User> Users { get; set; }
+
+        public System.Data.Entity.DbSet<TravelPartner.Data.Entities.Hotel> Hotels { get; set; }
     
     }
 }

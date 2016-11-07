@@ -1,0 +1,25 @@
+﻿@model TravelPartner.Data.Entities.Hotel
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-12 top-buffer">
+                <div class="media">
+                    <div class="media-left">
+                        <div class="col-md-2">
+                            <a href="#">
+                                <img src="@Url.Content("~/Images/" + @item.Image)" />
+
+                            </a>
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="media-heading">@item.Title</h4>
+                            @item.Content
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
