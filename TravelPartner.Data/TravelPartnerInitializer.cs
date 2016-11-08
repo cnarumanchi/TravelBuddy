@@ -16,6 +16,18 @@ namespace TravelPartner.Data
             //Add any default data or master data that is to be added to Database Tables repectively
             CreateHotelSeed(context);
             CreatePackageSeed(context);
+            CreateLoginDetails(context);
+        }
+
+        private void CreateLoginDetails(TravelPartnerContext context)
+        {
+            var loginDetails = new Login
+            {
+                kusername = "Admin",
+                kpassword = "Admin123",
+            };
+            context.LoginDetails.Add(loginDetails);
+            context.SaveChanges();
         }
 
         private void CreatePackageSeed(TravelPartnerContext context)

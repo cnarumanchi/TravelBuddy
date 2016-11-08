@@ -8,7 +8,13 @@ namespace TravelPartner.Data.Entities
 {
     public class Login
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string UserName { get; set; }
+        public int LoginId { get; set; }
+        public string kusername { get; set; }
+        public string kpassword { get; set; }
+        public string kacccod { get; set; }
+        public string kacccod1 { get; set; }
+        public string kdash { get; set; }
+        public string kusernameerrormsg { get; set; }
     }
 }
