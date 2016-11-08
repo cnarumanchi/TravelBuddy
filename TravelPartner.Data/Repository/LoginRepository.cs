@@ -22,5 +22,16 @@ namespace TravelPartner.Data.Repository
             return context.LoginDetails.Select(x => x).ToList();
         }
 
+        public int InsertUser(string uname, string pass)
+        {
+            var login = new Login
+            {
+                UserName = uname,
+                kpassword = pass
+            };
+            context.LoginDetails.Add(login);
+            return context.SaveChanges();
+        }
+
     }
 }

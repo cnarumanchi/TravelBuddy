@@ -6,77 +6,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
+
     <meta name="viewport" content="width=device-width" />
     <title>Travel Partner Login</title>
     <link href="~/Content/login_css.css" rel="stylesheet" />
 </head>
 <body>
-    @using (Html.BeginForm("logincheck", "login", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken();
-        <div class="materialContainer">
-            <div class="box">
-                <div class="title">LOGIN</div>
+    @*@using (Html.BeginForm("", "", FormMethod.Post))
+        {*@
+    @Html.AntiForgeryToken();
+    <div class="materialContainer">
+        <div class="box">
+            <div class="title">LOGIN</div>
 
-                <div class="input">
-                    <label for="name">Username</label>
-                    @Html.TextBoxFor(model => model.kusername, new { id = "name" })
-                    <span class="spin"></span>
-                </div>
-
-                <div class="input">
-                    <label for="pass">Password</label>
-                    @Html.PasswordFor(model => model.kpassword, new { id = "pass" })
-                    <span class="spin"></span>
-                </div>
-
-                <div class="button login">
-                    <button><span>GO</span> <i class="fa fa-check"></i></button>
-                    @ViewBag.Error
-                </div>
-
-                <a href="" class="pass-forgot">Forgot your password?</a>
-
-                <a href="" class="pass-forgot">@Html.DisplayFor(model => model.kusernameerrormsg)</a>
-
-
+            <div class="input">
+                <label for="name">Username</label>
+                @Html.TextBoxFor(model => model.kusername, new { id = "name" })
+                <span class="spin"></span>
             </div>
 
-            <div class="overbox">
-                <div class="material-button alt-2"><span class="shape"></span></div>
+            <div class="input">
+                <label for="pass">Password</label>
+                @Html.PasswordFor(model => model.kpassword, new { id = "pass" })
+                <span class="spin"></span>
+            </div>
 
-                <div class="title">REGISTER</div>
+            <div class="button login">
+                <button><span>GO</span> <i class="fa fa-check"></i></button>
+                @ViewBag.Error
+            </div>
 
-                <div class="input">
-                    <label for="regname">Username</label>
-                    <input type="text" name="regname" id="regname">
-                    <span class="spin"></span>
-                </div>
+            <a href="" class="pass-forgot">Forgot your password?</a>
 
-                <div class="input">
-                    <label for="regpass">Password</label>
-                    <input type="password" name="regpass" id="regpass">
-                    <span class="spin"></span>
-                </div>
+            <a href="" class="pass-forgot">@Html.DisplayFor(model => model.kusernameerrormsg)</a>
 
-                <div class="input">
-                    <label for="reregpass">Repeat Password</label>
-                    <input type="password" name="reregpass" id="reregpass">
-                    <span class="spin"></span>
-                </div>
 
-                <div class="button">
-                    <button><span>NEXT</span></button>
-                </div>
+        </div>
+
+        <div class="overbox">
+            <div class="material-button alt-2"><span class="shape"></span></div>
+
+            <div class="title">REGISTER</div>
+
+            <div class="input">
+                <label for="regname">Username</label>
+                <input type="text" name="regname" id="regname">
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="regpass">Password</label>
+                <input type="password" name="regpass" id="regpass">
+                <span class="spin"></span>
+            </div>
+
+            <div class="input">
+                <label for="reregpass">Repeat Password</label>
+                <input type="password" name="reregpass" id="reregpass">
+                <span class="spin"></span>
+            </div>
+
+            <div class="button">
+                <button id="btn_Next">NEXT</button>
             </div>
         </div>
-    }
+    </div>
+    @*}*@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/Custom/login.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            console.log('use name : ' + '@Model.kusername');
+            $('#btn_Next').click(function (event) {
+                var uname = $('#regname').val();
+                var password = $('#regpass').val();
+                var rePassword = $('#reregpass').val();
+
+                console.log("User : " + uname + "  pass:" + password);
+
+                if (password != rePassword) {
+                    alert("Password and Confirm Password doesn't match");
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                var data = { uname: uname, password: password };
+                //$('#regpass').val() = $('#reregpass').val() = '';
+                $.ajax({
+                    url: '@Url.Action("RegisterUser", "login")',
+                    data: data,
+                    dataType: 'json',
+                    type: 'post',
+                    success: function (result) {
+                        alert('User Added');
+                        window.location.href = '@Url.Action("Index","Home")'
+                    },
+                    complete: function () {
+                        $('#regpass').val('');
+                        $('#reregpass').val('');
+                        $('#regname').val('');
+                    }
+                });
+            });
             if ('@Model.kusername' != '') {
                 textBoxTextWatermark('name');
             };

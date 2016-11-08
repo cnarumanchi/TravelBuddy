@@ -10,6 +10,7 @@ namespace TravelPartner.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index()
+        
         {
             //Just to initialise the DB.
             HotelRepository hotel = new HotelRepository();

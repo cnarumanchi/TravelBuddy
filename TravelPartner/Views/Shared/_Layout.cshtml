@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Travel Partner", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -26,10 +26,10 @@
                     <li>@Html.ActionLink("Posts", "", "", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Hotels", "", "", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Packages", "", "", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Register", "Register", "Login", new { area = "" },null)</li>
-                    <li>@Html.ActionLink("Login", "Index", "Login", new { area = "" }, null)</li>
-
-                    @*Add all the actions you have to perform on the website*@
+                    <li>@Html.ActionLink("Register/Login", "Index", "Login", new { area = "" }, null)</li>
+                    <li>
+                        <a href="#" >Logged in as: @Session["login"]</a>
+                    </li>
                 </ul>
             </div>
         </div>

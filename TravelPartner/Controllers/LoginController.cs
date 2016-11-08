@@ -19,15 +19,24 @@ namespace TravelPartner.Controllers
 
         public ActionResult LoginCheck(Login loginModel)
         {
-            var found = loginModel.kusername== "Admin" && loginModel.kpassword == "Admin123";
+            var found = loginModel.kusername == "Admin" && loginModel.kpassword == "Admin123";
 
             if (found)
+            {
+                Session["login"] = "Admin";
                 return RedirectToAction("Index", "Home");
+            }
             else
             {
                 ViewBag.Error = "InValid Credentials";
                 return View("LoginCheck", new Login());
             }
+        }
+        public ActionResult RegisterUser(string uname, string password)
+        {
+            var res = loginRepo.InsertUser(uname, password);
+            Session["login"] = res != null ? uname : "";
+            return Json(res);
         }
     }
 }
