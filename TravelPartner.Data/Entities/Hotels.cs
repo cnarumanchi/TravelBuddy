@@ -14,6 +14,6 @@ namespace TravelPartner.Data.Entities
         public string Url { get; set; }
         public string DisplayText { get; set; }
         public string Content { get; set; }
-        public string Image { get; set; }
+        public string Images { get; set; }
     }
 }

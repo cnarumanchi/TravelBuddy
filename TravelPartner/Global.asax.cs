@@ -8,8 +8,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using TravelPartner.Data;
-using TravelPartner.Models;
-
+using System.Data;
+using TravelPartner.Data.Context;
 namespace TravelPartner
 {
     public class WebApiApplication : System.Web.HttpApplication
@@ -21,7 +21,7 @@ namespace TravelPartner
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //Database.SetInitializer<TravelPartnerContext>(new TravelPartnerInitializer());
+            Database.SetInitializer<TravelPartnerContext>(new TravelPartnerInitializer());
         }
     }
 }

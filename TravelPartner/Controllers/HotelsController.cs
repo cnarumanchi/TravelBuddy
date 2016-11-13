@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TravelPartner.Data.Repository;
 
 namespace TravelPartner.Controllers
 {
@@ -11,7 +12,9 @@ namespace TravelPartner.Controllers
         // GET: Hotels
         public ActionResult Index()
         {
-            return View();
+            HotelRepository hotel = new HotelRepository();
+            var list = hotel.showHotels();
+            return View(list);
         }
     }
 }

@@ -10,13 +10,15 @@ using TravelPartner.Data.Mapping;
 
 namespace TravelPartner.Data.Context
 {
-    class TravelPartnerContext : DbContext
+   public class TravelPartnerContext : DbContext
     {
-        public TravelPartnerContext() : base("TravelPartnerDBConnection")
+       public TravelPartnerContext()
+           : base("TravelPartnerDBConnection")
         {
-            Database.SetInitializer<TravelPartnerContext>(new DropCreateDatabaseIfModelChanges<TravelPartnerContext>());
+            //Database.SetInitializer<TravelPartnerContext>(new DropCreateDatabaseIfModelChanges<TravelPartnerContext>());
         }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+     
+       protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<PluralizingEntitySetNameConvention>();

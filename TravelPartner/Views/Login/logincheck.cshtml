@@ -12,8 +12,6 @@
     <link href="~/Content/login_css.css" rel="stylesheet" />
 </head>
 <body>
-    @*@using (Html.BeginForm("", "", FormMethod.Post))
-        {*@
     @Html.AntiForgeryToken();
     <div class="materialContainer">
         <div class="box">
@@ -34,6 +32,7 @@
             <div class="button login">
                 <button><span>GO</span> <i class="fa fa-check"></i></button>
                 @ViewBag.Error
+
             </div>
 
             <a href="" class="pass-forgot">Forgot your password?</a>
@@ -71,7 +70,6 @@
             </div>
         </div>
     </div>
-    @*}*@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/Custom/login.js"></script>
     <script type="text/javascript">

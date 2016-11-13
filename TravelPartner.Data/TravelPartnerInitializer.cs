@@ -9,7 +9,7 @@ using TravelPartner.Data.Entities;
 
 namespace TravelPartner.Data
 {
-    class TravelPartnerInitializer : DropCreateDatabaseIfModelChanges<TravelPartnerContext>
+    public class TravelPartnerInitializer : DropCreateDatabaseIfModelChanges<TravelPartnerContext>
     {
         protected override void Seed(TravelPartnerContext context)
         {
@@ -44,12 +44,11 @@ namespace TravelPartner.Data
         {
             var hotels = new List<Hotel>()
             {
-                new Hotel{Title="abc",DisplayText="This is the display text",Content="abcdefgh",Image="image1.jpg"}, 
-                new Hotel{ Title="abc",DisplayText="This is the display text",Content="abcdefgh",Image="image1.jpg"}, 
-                new Hotel{ Title="abc",DisplayText="This is the display text",Content="abcdefgh",Image="image1.jpg"}
+                new Hotel{Title="abc",DisplayText="This is the display text",Content="abcdefgh",Images="image1.jpe"}, 
+                new Hotel{ Title="abc",DisplayText="This is the display text",Content="abcdefgh",Images="image1.jpe"}, 
+                new Hotel{ Title="abc",DisplayText="This is the display text",Content="abcdefgh",Images="image1.jpe"}
                 //Insert the Prepopulated list from http://www.travel-buddies.com/Default.aspx
             };
-
             context.Hotels.AddRange(hotels);
             context.SaveChanges();
         }
