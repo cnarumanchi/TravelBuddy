@@ -30,7 +30,7 @@
             </div>
 
             <div class="button login">
-                <button><span>GO</span> <i class="fa fa-check"></i></button>
+                <button id="go"><span>GO</span> <i class="fa fa-check"></i></button>
                 @ViewBag.Error
 
             </div>
@@ -73,45 +73,72 @@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/Custom/login.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#btn_Next').click(function (event) {
-                var uname = $('#regname').val();
-                var password = $('#regpass').val();
-                var rePassword = $('#reregpass').val();
+    $(document).ready(function () {
+        $('#btn_Next').click(function (event) {
+            var uname = $('#regname').val();
+            var password = $('#regpass').val();
+            var rePassword = $('#reregpass').val();
 
-                console.log("User : " + uname + "  pass:" + password);
+            console.log("User : " + uname + "  pass:" + password);
 
-                if (password != rePassword) {
-                    alert("Password and Confirm Password doesn't match");
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                var data = { uname: uname, password: password };
-                //$('#regpass').val() = $('#reregpass').val() = '';
-                $.ajax({
-                    url: '@Url.Action("RegisterUser", "login")',
-                    data: data,
-                    dataType: 'json',
-                    type: 'post',
-                    success: function (result) {
+            if (password != rePassword) {
+                alert("Password and Confirm Password doesn't match");
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            var data = { uname: uname, password: password };
+            //$('#regpass').val() = $('#reregpass').val() = '';
+            $.ajax({
+                url: '@Url.Action("RegisterUser", "login")',
+                data: data,
+                dataType: 'json',
+                type: 'post',
+                success: function (result) {
+                    if (result.res != undefined || result.res != null) {
                         alert('User Added');
-                        window.location.href = '@Url.Action("Index","Home")'
-                    },
-                    complete: function () {
-                        $('#regpass').val('');
-                        $('#reregpass').val('');
-                        $('#regname').val('');
+                        window.location.href = '@Url.Action("Index","Home")';
                     }
-                });
+                    else {
+                        alert(result.Error);
+                    }
+                },
+                complete: function () {
+                    $('#regpass').val('');
+                    $('#reregpass').val('');
+                    $('#regname').val('');
+                }
+            });
+        });
+        $('#go').click(function () {
+            var uname = $('#name').val();
+            var password = $('#pass').val();
+            if (uname == null || pass == null) alert("UserName or Password is empty");
+            else {
+                var data = { uname: uname, password: password };
+                $.ajax({
+                    url: '@Url.Action("LoginCheck", "login")',
+                        data: data,
+                        dataType: 'json',
+                        type: 'post',
+                        success: function (result) {
+                            if (result.Error != undefined || result.Error != null)
+                                alert(result.Error);
+                            else
+                                window.location.href = '@Url.Action("Index","Home")';
+
+                        }
+                    })
+                }
             });
             if ('@Model.kusername' != '') {
-                textBoxTextWatermark('name');
-            };
+            textBoxTextWatermark('name');
+        };
 
-            if ('@Model.kpassword' != '') {
-                textBoxTextWatermark('pass');
-            };
-        });
+        if ('@Model.kpassword' != '') {
+            textBoxTextWatermark('pass');
+        };
+    });
+
     </script>
 </body>
 </html>

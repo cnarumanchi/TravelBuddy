@@ -1,0 +1,37 @@
+﻿@model TravelPartner.Data.Entities.Post
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row" style="margin-top: 90px;">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="fromlocation">From Location:</label>
+                    <input type="text" class="form-control" id="fromlocation">
+                </div>
+                <div class="form-group">
+                    <label for="tolocation">To Location:</label>
+                    <input type="password" class="form-control" id="tolocation">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="fromDate">From Date:</label>
+                    <input type="datetime" class="form-control" id="fromDate">
+                </div>
+                <div class="form-group">
+                    <label for="toDate">To Date:</label>
+                    <input type="datetime" class="form-control" id="toDate">
+                </div>
+            </div>
+            <button type="submit" class="col-lg-offset-4 btn btn-default">Submit</button>
+        </div>
+
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+

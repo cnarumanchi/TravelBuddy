@@ -11,32 +11,44 @@ namespace TravelPartner.Controllers
     public class LoginController : Controller
     {
         private LoginRepository loginRepo = new LoginRepository();
+        private List<User> users = new List<User>();
+
         // GET: Login
         public ActionResult Index()
         {
             return View("LoginCheck", new Login());
         }
 
-        public ActionResult LoginCheck(Login loginModel)
+        public ActionResult LoginCheck(string uname, string password)
         {
-            var found = loginModel.kusername == "Admin" && loginModel.kpassword == "Admin123";
+            var users = loginRepo.GetAllUsers();
+            var found = users.Any(x => x.UserName == uname && x.kpassword == password);
 
             if (found)
             {
-                Session["login"] = "Admin";
-                return RedirectToAction("Index", "Home");
+                Session["login"] = uname;
+                return Json(new { Result = "Success" }, JsonRequestBehavior.AllowGet);
             }
             else
             {
                 ViewBag.Error = "InValid Credentials";
-                return View("LoginCheck", new Login());
+                return Json(new { Error = "InValid Credentials" }, JsonRequestBehavior.AllowGet);
             }
         }
         public ActionResult RegisterUser(string uname, string password)
         {
-            var res = loginRepo.InsertUser(uname, password);
-            Session["login"] = res != null ? uname : "";
-            return Json(res);
+            var users = loginRepo.GetAllUsers();
+            var exists = users.Any(x => x.UserName == uname);
+            if (!exists)
+            {
+                var res = loginRepo.InsertUser(uname, password);
+                Session["login"] = res != 0 ? uname : "";
+                return Json(new {Result= res }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { Error = "Username already taken" }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }
