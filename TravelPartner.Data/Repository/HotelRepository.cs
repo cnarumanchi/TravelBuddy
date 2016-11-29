@@ -21,7 +21,10 @@ namespace TravelPartner.Data.Repository
         {
             return context.Hotels.Select(x=>x).ToList();
         }
-
+        public List<Package> showPackages()
+        {
+            return context.Packages.Select(x => x).ToList();
+        }
         public bool InsertHotel(Hotel hotel)
         {
             context.Hotels.Add(hotel);

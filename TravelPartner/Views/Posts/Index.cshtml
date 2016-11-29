@@ -1,9 +1,10 @@
 ﻿@model TravelPartner.Data.Entities.Post
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Submit Post";
 }
-
+<link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
 <div class="row" style="margin-top: 90px;">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
@@ -12,26 +13,67 @@
                 <div class="form-group">
                     <label for="fromlocation">From Location:</label>
                     <input type="text" class="form-control" id="fromlocation">
+                    
                 </div>
+                
                 <div class="form-group">
                     <label for="tolocation">To Location:</label>
-                    <input type="password" class="form-control" id="tolocation">
+                    <input type="text" class="form-control" id="tolocation">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="fromDate">From Date:</label>
-                    <input type="datetime" class="form-control" id="fromDate">
+                    <input type="text" class="form-control" id="fromDate">
                 </div>
                 <div class="form-group">
                     <label for="toDate">To Date:</label>
-                    <input type="datetime" class="form-control" id="toDate">
+                    <input type="text" class="form-control" id="toDate">
                 </div>
             </div>
-            <button type="submit" class="col-lg-offset-4 btn btn-default">Submit</button>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea rows="5" class="form-control" id="description"></textarea>
+                </div>
+            </div>
+            <span>
+                <input type="file"
+                       style="visibility:hidden; width: 1px;"
+                       id='${multipartFilePath}' name='${multipartFilePath}'
+                       onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))" /> <!-- Chrome security returns 'C:\fakepath\'  -->
+                <input class="btn btn-primary" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();" /> <!-- on button click fire the file click event -->
+                &nbsp;
+                <span class="badge badge-important"></span>
+            </span>
+            <button type="submit" id="submit" class="col-lg-offset-4 btn btn-default">Submit</button>
         </div>
+
 
     </div>
     <div class="col-sm-3"></div>
+    
+    
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#fromDate').datepicker({
+            format: 'dd-mm-yyyy',
+            clearBtn: true,
+            todayHighlight: true,
+            autoclose: true
+        });
+        $('#toDate').datepicker({
+            format: 'dd-mm-yyyy',
+            clearBtn: true,
+            todayHighlight: true,
+            autoclose: true
+        });
+
+        $('#submit').click(function () {
+
+        });
+
+    })
+</script>

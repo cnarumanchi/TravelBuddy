@@ -32,11 +32,12 @@ namespace TravelPartner.Data
 
         private void CreatePackageSeed(TravelPartnerContext context)
         {
-            var package = new Package
+            var package = new List<Package>
             {
+                new Package{ PackageTitle="Online Hotels",DisplayText="No Text",Content="Compare room rates and check hotel availability instantly for hotels in United States of America- Choose your perfect United States of America hotel and view location maps, star ratings, detailed hotel descriptions, high-quality photos, and guest hotel reviews- Securely book your hotel room online", Image="hotel.jpe",Url="http://www.booking.com/country/us.en-gb.html"}, 
                 //Insert the Prepopulated list from http://www.travel-buddies.com/Default.aspx
             };
-            context.Packages.Add(package);
+            context.Packages.AddRange(package);
             context.SaveChanges();
         }
 
