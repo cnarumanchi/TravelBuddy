@@ -26,7 +26,14 @@ namespace TravelPartner.Data
                 kusername = "Admin",
                 kpassword = "Admin123",
             };
+            var loginDetail = new Login
+            {
+                kusername = "Anonymous",
+                kpassword = "",
+            };
+
             context.LoginDetails.Add(loginDetails);
+            context.LoginDetails.Add(loginDetail); 
             context.SaveChanges();
         }
 
@@ -46,8 +53,8 @@ namespace TravelPartner.Data
             var hotels = new List<Hotel>()
             {
                 new Hotel{Title="Inca Heartland",DisplayText="No Text",Content="Experience the archaeological highlights and the cultural treasures of the Andean highlands, then uncover the secrets of the mysterious Nazca Lines and Peru's desert coast on this incredible 3-week adventure. Embrace Incan culture past and present in Cusco and get a taste of Bolivian culture.",Images="image1.jpe",Url="https://www.gadventures.com/trips/inca-heartland/1068/?PID=5806206"}, 
-                new Hotel{ Title="Backroads of Japan",DisplayText="Japan",Content="Tokyo and Kyotothe modern and imperial capitals of Japan, respectivelyrepresent the perfect merger of the ancient and the contemporary. On this trip, youll thoroughly explore both and everything in between, from traditional villages and miles of rice fields to ancient temples and the stunning visuals.",Images="image1.jpe", Url="https://www.gadventures.com/trips/backroads-of-japan/812/?PID=5806206"}, 
-                new Hotel{ Title="Naadam Mangolia",DisplayText="Mangolia",Content="Wander the land that gave the world Genghis Khan and experience the rich pageantry and intense competitions of the legendary Naadam Festival. Witness giants wrestle, archers hit impossible targets and horses race across grasslands to glory. Travel the regions steppes and sand dunes.",Images="image1.jpe", Url="https://www.gadventures.com/trips/naadam-festival-mongolia/3439/?PID=5806206"}
+                new Hotel{ Title="Backroads of Japan",DisplayText="Japan",Content="Tokyo and Kyotothe modern and imperial capitals of Japan, respectivelyrepresent the perfect merger of the ancient and the contemporary. On this trip, youll thoroughly explore both and everything in between, from traditional villages and miles of rice fields to ancient temples and the stunning visuals.",Images="image2.jpg", Url="https://www.gadventures.com/trips/backroads-of-japan/812/?PID=5806206"}, 
+                new Hotel{ Title="Naadam Mangolia",DisplayText="Mangolia",Content="Wander the land that gave the world Genghis Khan and experience the rich pageantry and intense competitions of the legendary Naadam Festival. Witness giants wrestle, archers hit impossible targets and horses race across grasslands to glory. Travel the regions steppes and sand dunes.",Images="image3.jpg", Url="https://www.gadventures.com/trips/naadam-festival-mongolia/3439/?PID=5806206"}
                 //Insert the Prepopulated list from http://www.travel-buddies.com/Default.aspx
             };
             context.Hotels.AddRange(hotels);

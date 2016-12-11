@@ -26,7 +26,7 @@ namespace TravelPartner.Data.Repository
         {
             var login = new Login
             {
-                UserName = uname,
+                kusername = uname,
                 kpassword = pass
             };
             context.LoginDetails.Add(login);

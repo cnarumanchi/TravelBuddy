@@ -1,12 +1,13 @@
 ﻿body {
-    margin-top: 90px;
+    margin-top: 60px;
     background-image: url('../Images/login.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
-    overflow:auto;
+    /*overflow-x:auto;*/
+
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -16,7 +17,6 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select {
-    /*max-width: 280px;*/
-}
+    /*max-width: 280px;}*/

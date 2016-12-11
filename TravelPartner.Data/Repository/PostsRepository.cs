@@ -8,25 +8,23 @@ using TravelPartner.Data.Entities;
 
 namespace TravelPartner.Data.Repository
 {
-    public class HotelRepository
+    public class PostsRepository
     {
         TravelPartnerContext context;
 
-		public HotelRepository()
+        public PostsRepository()
         {
             context = new TravelPartnerContext();
         }
-
-		public List<Hotel> showHotels()
+        public bool InsertPost(Post post)
         {
-            return context.Hotels.Select(x=>x).ToList();
-        }
-        
-        public bool InsertHotel(Hotel hotel)
-        {
-            context.Hotels.Add(hotel);
+            context.Posts.Add(post);
             context.SaveChanges();
             return true;
+        }
+        public List<Post> GetPosts()
+        {
+            return context.Posts.Select(x => x).ToList();
         }
     }
 }

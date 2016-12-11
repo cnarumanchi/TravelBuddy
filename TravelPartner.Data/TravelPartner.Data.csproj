@@ -56,6 +56,7 @@
     <Compile Include="Entities\Login.cs" />
     <Compile Include="Entities\Packages.cs" />
     <Compile Include="Entities\Post.cs" />
+    <Compile Include="Entities\postVM.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IHotelRepository.cs" />
     <Compile Include="Interfaces\IPackageRepository.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\LoginRepository.cs" />
     <Compile Include="Repository\PackageRepository.cs" />
+    <Compile Include="Repository\PostsRepository.cs" />
     <Compile Include="TravelPartnerInitializer.cs" />
   </ItemGroup>
   <ItemGroup>

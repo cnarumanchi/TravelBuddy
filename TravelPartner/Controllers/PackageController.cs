@@ -13,8 +13,8 @@ namespace TravelPartner.Controllers
         // GET: Package
         public ActionResult Index()
         {
-            HotelRepository hotel = new HotelRepository();
-            var list = hotel.showPackages();
+            PackageRepository packages = new PackageRepository();
+            var list = packages.GetAll();
             return View(list);
         }
     }

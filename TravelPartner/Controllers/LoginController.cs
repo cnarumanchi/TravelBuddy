@@ -22,7 +22,7 @@ namespace TravelPartner.Controllers
         public ActionResult LoginCheck(string uname, string password)
         {
             var users = loginRepo.GetAllUsers();
-            var found = users.Any(x => x.UserName == uname && x.kpassword == password);
+            var found = users.Any(x => x.kusername == uname && x.kpassword == password);
 
             if (found)
             {
@@ -38,7 +38,7 @@ namespace TravelPartner.Controllers
         public ActionResult RegisterUser(string uname, string password)
         {
             var users = loginRepo.GetAllUsers();
-            var exists = users.Any(x => x.UserName == uname);
+            var exists = users.Any(x => x.kusername == uname);
             if (!exists)
             {
                 var res = loginRepo.InsertUser(uname, password);
@@ -49,6 +49,12 @@ namespace TravelPartner.Controllers
             {
                 return Json(new { Error = "Username already taken" }, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        public ActionResult SignOut()
+        {
+            Session["Login"] = null;
+            return RedirectToAction("Index", "Home");
         }
     }
 }
